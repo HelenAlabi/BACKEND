@@ -38,13 +38,6 @@ app.use(session({
 }));
 
 
-
-app.use(cors({
-  origin: 'http://localhost:5173', // Adjust this to match your frontend URL
-  credentials: true,
-}));
-
-
 app.use("/api/users", userRoutes);
 app.use("/api/notes",requireAuth, router);
 

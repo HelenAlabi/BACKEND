@@ -15,7 +15,7 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-   origin: 'http://localhost:5173', // Your frontend URL
+   origin: ['http://localhost:5173', 'https://notes-app-frontend-uhx8.onrender.com/'], // Your frontend URL
    credentials: true,
  }));
 

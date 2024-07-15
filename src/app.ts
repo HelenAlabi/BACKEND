@@ -63,12 +63,15 @@
 
 
 // app.ts
-import express, { Request, Response, NextFunction } from 'express';
+// app.ts
+import express, { Request, Response} from 'express';
 import morgan from 'morgan';
 import session from 'express-session';
 import createHttpError, { isHttpError } from 'http-errors';
 import MongoStore from 'connect-mongo';
 import cors from 'cors';
+import path from 'path';
+import favicon from 'serve-favicon';
 import router from './routes/notesRoutes';
 import userRoutes from './routes/userRoutes';
 import env from './utilities/validatesEnv';
@@ -97,10 +100,12 @@ app.use(session({
    }),
 }));
 
+// Serve the favicon
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use('/api/users', userRoutes);
 app.use('/api/notes', requireAuth, router);
 
-// Add this route to handle the root URL
 app.get('/', (req: Request, res: Response) => {
    res.send('API is running');
 });
@@ -121,4 +126,5 @@ app.use((error: unknown, req: Request, res: Response) => {
 });
 
 export default app;
+
 

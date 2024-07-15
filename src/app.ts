@@ -62,8 +62,7 @@
 // export default app;
 
 
-// app.ts
-// app.ts
+
 import express, { Request, Response} from 'express';
 import morgan from 'morgan';
 import session from 'express-session';
